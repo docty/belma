@@ -1,167 +1,110 @@
-import Image from "next/image"
 import Link from "next/link"
-import { Children, useRef, useState } from "react"
-import { IoHome, IoCaretForward, IoCaretDown, IoAdd, IoAccessibility, IoApps, IoNotifications, IoPeople, IoLogOut } from 'react-icons/io5'
+import { IoHome, IoCaretForward, IoPeople, IoArrowUp, IoCart, IoArrowDown, IoPricetag, IoBag } from 'react-icons/io5'
+import Layout from "../components/layout"
 
 const Dashboard = () => {
-    const staffRef = useRef<HTMLDivElement>(null)
-    const [caret, setCaret] = useState<boolean>(true);
-
-    const onItemClick = () => {
-        if (staffRef.current?.classList.contains('h-0')) {
-            staffRef.current?.classList.replace('h-0', 'min-h-fit')
-        } else {
-            staffRef.current?.classList.replace('min-h-fit', 'h-0')
-        }
-
-        setCaret(p => !p);
-    }
 
     return (
-        <div>
-            <Sidebar />
-            <div className="border flex ml-half p-4 px-8 justify-between">
-                <input type="search" name="" id="" placeholder="Search" className="p-2 rounded-sm bg-gray-200" />
-                <div className="flex items-center justify-center gap-x-6">
-                    <button className=" h-full relative hover:bg-slate-200 p-2   rounded-md">
-                        <p className="bg-red-600 rounded-full text-white text-xs font-bold text-center absolute p-1 -right-1 -top-2">10</p>
-                        <IoNotifications className="block h-full text-lg w-6" />
-                    </button>
-                    <div className="relative">
-                        <button className="flex items-center gap-2" onClick={onItemClick}>
-                            <Image src={'/assets/avatar-10.jpg'} alt={'Avatar'} className={'rounded-full'} height={40} width={40} />
-                            <div className="text-sm">
-                                <p className="font-bold">Emmanuella Asamoah</p>
-                                <p className="text-gray-600 text-left">Frontend Developer</p>
-                            </div>
+        <Layout>
+            <Content/>
+        </Layout>
+    )
+}
 
-                        </button>
-                        <div ref={staffRef} className=" absolute w-full bg-white mt-3 z-10 shadow-md h-0 overflow-y-clip">
-                            <button className="text-gray-600 hover:bg-slate-100 block w-full text-left p-2">
-                                <IoPeople className="inline w-12 text-lg" />
-                                <span className="text-sm">Profile</span>
-                            </button>
-                            <hr className="my-2" />
-                            <button className="text-gray-600 hover:bg-slate-100 block w-full text-left p-2">
-                                <IoLogOut className="inline w-12 text-lg" />
-                                <span className="text-sm">Logout</span>
-                            </button>
+
+const Content = () => {
+
+    return (
+        <>
+            <div className="flex justify-between border border-t-0 p-3">
+                <p className="uppercase text-gray-900 font-bold px-8">
+                    <IoHome className="inline mr-2" />
+                    Dashboard
+                </p>
+                <div className="flex items-center gap-x-2 text-sm">
+                    <p className="text-gray-800 font-semibold">Dashboards</p>
+                    <IoCaretForward />
+                    <p className="text-gray-600">Dashboard</p>
+                </div>
+            </div>
+            <div className="grid grid-cols-4 p-6 mt-12 gap-x-4">
+                <div className="border p-3 rounded-md shadow-md">
+                    <div className="flex justify-between uppercase ">
+                        <p className="text-gray-500">Total Earnings</p>
+                        <p className="text-green-600">
+                            <IoArrowUp className="inline" />
+                            +16.24%
+                        </p>
+                    </div>
+                    <p className="text-slate-900 text-3xl font-bold my-6">$559.25k</p>
+                    <div className="flex justify-between">
+                        <Link href={'#'} className={'underline text-blue-700 text-sm self-end'}>View net earnings</Link>
+                        <div className="bg-green-200 p-4 rounded-md">
+                            <IoPricetag className="text-xl" />
                         </div>
                     </div>
-
+                </div>
+                <div className="border p-3 rounded-md shadow-md">
+                    <div className="flex justify-between uppercase ">
+                        <p className="text-gray-500">Orders</p>
+                        <p className="text-red-600">
+                            <IoArrowDown className="inline" />
+                            -3.57%
+                        </p>
+                    </div>
+                    <p className="text-slate-900 text-3xl font-bold my-6">36,894</p>
+                    <div className="flex justify-between">
+                        <Link href={'#'} className={'underline text-blue-700 text-sm self-end'}>View all orders</Link>
+                        <div className="bg-orange-200 p-4 rounded-md">
+                            <IoCart className="text-xl" />
+                        </div>
+                    </div>
+                </div>
+                <div className="border p-3 rounded-md shadow-md">
+                    <div className="flex justify-between uppercase ">
+                        <p className="text-gray-500">Customers</p>
+                        <p className="text-green-600">
+                            <IoArrowUp className="inline" />
+                            +29.08%
+                        </p>
+                    </div>
+                    <p className="text-slate-900 text-3xl font-bold my-6">183.35M</p>
+                    <div className="flex justify-between">
+                        <Link href={'#'} className={'underline text-blue-700 text-sm self-end'}>See details</Link>
+                        <div className="bg-sky-200 p-4 rounded-md">
+                            <IoPeople className="text-xl" />
+                        </div>
+                    </div>
+                </div>
+                <div className="border p-3 rounded-md shadow-md">
+                    <div className="flex justify-between uppercase ">
+                        <p className="text-gray-500">My Balance</p>
+                        <p className="text-green-600">
+                            <IoArrowUp className="inline" />
+                            +0.50%
+                        </p>
+                    </div>
+                    <p className="text-slate-900 text-3xl font-bold my-6">$165.89k</p>
+                    <div className="flex justify-between">
+                        <Link href={'#'} className={'underline text-blue-700 text-sm self-end'}>Withdraw money</Link>
+                        <div className="bg-violet-200 p-4 rounded-md">
+                            <IoBag className="text-xl" />
+                        </div>
+                    </div>
                 </div>
 
             </div>
-        </div>
-    )
-}
-
-
-const Sidebar = () => {
-    const account: IAccount[] = [
-        {
-            title: 'Staff',
-            icon: <IoApps className="inline-block text-xl w-12" />,
-            children: [
-                {
-                    title: 'View Staff',
-                    href: '#'
-                },
-                {
-                    title: 'Create Staff',
-                    href: '#'
-                }
-            ]
-        },
-        {
-            title: 'Customer',
-            icon: <IoAccessibility className="inline-block text-xl w-12" />,
-            children: [
-                {
-                    title: 'View Customer',
-                    href: '#'
-                },
-                {
-                    title: 'Create Customer',
-                    href: '#'
-                }
-            ]
-        },
-    ]
-    return (
-        <aside className="bg-slate-900 h-screen w-3/12 fixed p-3">
-            <Image src={"/assets/logo-light.png"} alt={"Logo"} width={120} height={120} className={'mx-auto my-6'} />
-
-            <div className="p-4">
-                <Link className="text-white  h-12 uppercase text-sm flex items-center font-bold bg-yellow-700 hover:bg-slate-700 rounded-md " href={'/dashboard'} >
-                    <IoHome className="inline-block text-xl w-12" />
-                    <span className="text-xs">Dashboard</span>
-                </Link>
-
-                <p className="uppercase  text-gray-500 text-xs font-semibold mt-8 mb-4"> Account</p>
-
-                {
-                    Children.toArray(account.map((value) => <MenuItem item={value} />))
-                }
-
+            <div className="grid grid-cols-3 p-6 gap-x-4">
+                <div className="bg-white col-span-2 p-3 h-96 shadow-md">
+                    <p className="border-b">Revenue</p>
+                </div>
+                <div className="bg-white shadow-md p-3 ">
+                    <p className="border-b">Sales by Locations</p>
+                </div>
             </div>
-        </aside>
+        </>
     )
 }
-
-const MenuItem = ({ item }: IMenuItem) => {
-
-    const staffRef = useRef<HTMLDivElement>(null)
-    const [caret, setCaret] = useState<boolean>(true);
-
-    const onItemClick = () => {
-        if (staffRef.current?.classList.contains('h-0')) {
-            staffRef.current?.classList.replace('h-0', 'min-h-fit')
-        } else {
-            staffRef.current?.classList.replace('min-h-fit', 'h-0')
-        }
-
-        setCaret(p => !p);
-    }
-
-    return (
-        <div onClick={onItemClick} className={' rounded-md text-gray-400 '}>
-            <Link className=" hover:bg-slate-700 active-tabs rounded-md h-12 uppercase text-sm flex items-center p-0" href={'#'} >
-                {item.icon}
-                <span className="text-xs">{item.title}</span>
-                {
-                    caret ?
-                        <IoCaretForward className="inline-block text-xl w-8 ml-auto" />
-                        :
-                        <IoCaretDown className="inline-block text-xl w-8 ml-auto" />
-                }
-
-            </Link>
-            <div ref={staffRef} className=" text-sm rounded-md  grid gap-0 h-0 overflow-y-clip transition-height">
-                {
-                    Children.toArray(item.children.map(child => (
-                        <Link href={child.href} className={'p-4 px-8  block hover:bg-slate-800 '}>
-                            <IoAdd className="inline text-lg font-semibold w-12" />
-                            {child.title}
-                        </Link>
-                    )))
-                }
-            </div>
-        </div>
-    )
-}
-
-interface IMenuItem {
-    item: IAccount
-}
-
-interface IAccount {
-    title: string;
-    icon: any;
-    children: {
-        title: string;
-        href: string;
-    }[];
-}
+ 
 
 export default Dashboard

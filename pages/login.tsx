@@ -1,8 +1,9 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { IoLogoFacebook, IoLogoGithub, IoLogoTwitter, IoLogoGoogle } from 'react-icons/io5'
 const Login = () => {
-
+    const route = useRouter();
     return (
         <>
             <Head>
@@ -18,14 +19,15 @@ const Login = () => {
                 <div className="border bg-white rounded-md p-6 lg:w-4/12  w-10/12 md:w-8/12">
                     <p className="font-bold text-center text-lg text-cyan-800">Welcome Back !</p>
                     <p className="text-center text-sm text-gray-500">Sign in to continue to Belma</p>
-                    <form action="" method="post" className="my-10 flex flex-col gap-5">
+                    <form action="" onSubmit={(e) => { e.preventDefault(); route.push('/dashboard') }} method="post" className="my-10 flex flex-col gap-5">
                         <div >
                             <label htmlFor="" className="font-semibold block">Username</label>
-                            <input type="text" placeholder="Enter username" className="block border rounded-sm w-full py-2 px-3 text-sm mt-2 focus:border-red-500"  />
+                            <input type="text" placeholder="Enter username" className="block border rounded-sm w-full py-2 px-3 text-sm mt-2 focus:border-red-500" />
                         </div>
                         <div>
                             <label htmlFor="" className="font-semibold block">Password</label>
-                            <input type="password" placeholder="Enter password" className="block border rounded-sm w-full py-2 px-3 text-sm mt-2"  />
+                            <input type="password" placeholder="Enter password" className="block border rounded-sm w-full py-2 px-3 text-sm mt-2" />
+                            <Link href={'/forgot_password'} className={'text-right  block my-3 text-gray-600'}>Forgot Password</Link>
                         </div>
                         <div>
                             <input type="checkbox" name="Remember me" id="checkbox" className="mr-2" />
@@ -36,16 +38,16 @@ const Login = () => {
                     <p className="text-center my-4">Sign in with</p>
                     <div className="flex items-center justify-center gap-1">
                         <button className="bg-blue-800 rounded-sm p-2 flex items-center justify-center  text-white w-10 h-10">
-                            <IoLogoFacebook className="text-3xl"/>
+                            <IoLogoFacebook className="text-3xl" />
                         </button>
                         <button className="bg-red-800 rounded-sm p-2 flex items-center justify-center text-white w-10 h-10">
-                            <IoLogoGoogle className="text-3xl"/>
+                            <IoLogoGoogle className="text-3xl" />
                         </button>
                         <button className="bg-black rounded-sm p-2 flex items-center justify-center text-white w-10 h-10">
-                        <IoLogoGithub className="text-3xl"/>
+                            <IoLogoGithub className="text-3xl" />
                         </button>
                         <button className="bg-blue-500 rounded-sm p-2 flex items-center justify-center text-white w-10 h-10">
-                        <IoLogoTwitter className="text-3xl"/>
+                            <IoLogoTwitter className="text-3xl" />
                         </button>
                     </div>
                 </div>
