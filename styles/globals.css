@@ -2,12 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Poppins';
+  src: url('../public/fonts/Poppins-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../public/fonts/Roboto-Regular.ttf');
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-size: 14px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+  font-family: Roboto
 }
 
 a {
@@ -44,18 +54,18 @@ a {
 
 }
 
-.transition-height{
+.transition-height {
   transition-property: min-height;
   transition-timing-function: linear;
   transition-duration: 100ms;
 }
 
-.active-tab{
+.active-tab {
   background-color: rgb(161 98 7 / var(--tw-bg-opacity));
   color: #fff;
   font-weight: bold;
 }
 
-.ml-half{ 
+.ml-half {
   margin-left: 16.666667%;
 }

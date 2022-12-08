@@ -20,13 +20,13 @@ const Content = () => {
         <>
             <div className="flex justify-between border border-t-0 p-3">
                 <p className="uppercase text-gray-900 font-bold px-8">
-                    <IoHome className="inline mr-2" />
+                    <IoPeople className="inline mr-2" />
                     STAFF
                 </p>
                 <div className="flex items-center gap-x-2 text-sm px-8" >
                     <p className="text-gray-800 font-semibold">Dashboards</p>
                     <IoCaretForward />
-                    <p className="text-gray-600">List Staff</p>
+                    <p className="text-gray-600">View Staff</p>
                 </div>
             </div>
 

@@ -1,12 +1,13 @@
 import Link from "next/link"
 import { IoHome, IoCaretForward, IoPeople, IoArrowUp, IoCart, IoArrowDown, IoPricetag, IoBag } from 'react-icons/io5'
 import Layout from "../components/layout"
+import { Cell, Legend, Line, LineChart, Pie, PieChart, Tooltip, XAxis, YAxis } from 'recharts'
 
 const Dashboard = () => {
 
     return (
         <Layout>
-            <Content/>
+            <Content />
         </Layout>
     )
 }
@@ -14,6 +15,43 @@ const Dashboard = () => {
 
 const Content = () => {
 
+    const data = [
+        {
+            name: 'Page A',
+            uv: 4000,
+            pv: 2400,
+            amt: 2400,
+        },
+        {
+            name: 'Page B',
+            uv: 3000,
+            pv: 1300,
+            amt: 6400,
+        },
+        {
+            name: 'Page C',
+            uv: 6000,
+            pv: 3400,
+            amt: 8400,
+        }
+    ]
+
+    const pieData = [
+        {
+            name: 'Salary',
+            weight: 15,
+        },
+        {
+            name: 'Age',
+            weight: 60,
+        },
+        {
+            name: 'Duration',
+            weight: 25,
+        }
+    ]
+
+    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042']
     return (
         <>
             <div className="flex justify-between border border-t-0 p-3">
@@ -36,7 +74,7 @@ const Content = () => {
                             +16.24%
                         </p>
                     </div>
-                    <p className="text-slate-900 text-3xl font-bold my-6">$559.25k</p>
+                    <p className="text-slate-900 text-3xl font-bold my-6" >$559.25k</p>
                     <div className="flex justify-between">
                         <Link href={'#'} className={'underline text-blue-700 text-sm self-end'}>View net earnings</Link>
                         <div className="bg-green-200 p-4 rounded-md">
@@ -52,7 +90,7 @@ const Content = () => {
                             -3.57%
                         </p>
                     </div>
-                    <p className="text-slate-900 text-3xl font-bold my-6">36,894</p>
+                    <p className="text-slate-900 text-3xl font-bold my-6"  >36,894</p>
                     <div className="flex justify-between">
                         <Link href={'#'} className={'underline text-blue-700 text-sm self-end'}>View all orders</Link>
                         <div className="bg-orange-200 p-4 rounded-md">
@@ -97,14 +135,33 @@ const Content = () => {
             <div className="grid grid-cols-3 p-6 gap-x-4">
                 <div className="bg-white col-span-2 p-3 h-96 shadow-md">
                     <p className="border-b">Revenue</p>
+                    <LineChart width={500} height={300} data={data}>
+                        <XAxis dataKey={'name'} />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Line type={'monotone'} dataKey={'pv'} stroke={'#8884d8'} />
+                        <Line type={'monotone'} dataKey={'uv'} />
+                    </LineChart>
                 </div>
                 <div className="bg-white shadow-md p-3 ">
                     <p className="border-b">Sales by Locations</p>
+                    <PieChart width={500} height={300}    >
+                        <Tooltip/>
+                        <Pie dataKey={"weight"} data={pieData}  fill={'#8884d8'} label/>
+                        {
+                            pieData.map((entry, index) => (
+                                <Cell fill={COLORS[index % COLORS.length]} key={`cell-${index}`} />
+                            ))
+                        }
+                       
+                         
+                    </PieChart>
                 </div>
             </div>
         </>
     )
 }
- 
+
 
 export default Dashboard

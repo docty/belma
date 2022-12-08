@@ -1,4 +1,4 @@
-import { IoHome, IoCaretForward, IoPencil, IoTrash } from 'react-icons/io5'
+import { IoHome, IoCaretForward, IoPencil, IoTrash, IoPeople } from 'react-icons/io5'
 import Layout from "../../components/layout"
 
 const Create = () => {
@@ -17,7 +17,7 @@ const Content = () => {
         <>
             <div className="flex justify-between border border-t-0 p-3">
                 <p className="uppercase text-gray-900 font-bold px-8">
-                    <IoHome className="inline mr-2" />
+                    <IoPeople className="inline mr-2" />
                     STAFF
                 </p>
                 <div className="flex items-center gap-x-2 text-sm px-8">
@@ -29,7 +29,7 @@ const Content = () => {
 
             <div className=" p-6">
                 <div className="bg-white col-span-2 p-3 h-96 shadow-md">
-                    <p className="border-b mb-4">Customer Create</p>
+                    <p className="border-b mb-4">Staff Create</p>
                     <form action="#" className='grid grid-cols-3 gap-6'>
                         <div className='w-full'>
                             <label htmlFor="" className='block font-semibold'>First Name</label>
