@@ -1,12 +1,12 @@
 import Link from "next/link"
 import { Children, useRef, useState } from "react"
-import { IoApps, IoHome, IoCaretForward, IoCaretDown, IoAdd, IoNotifications, IoPeople, IoLogOut } from "react-icons/io5"
+import { IoApps, IoHome, IoCaretForward, IoCaretDown, IoMenu, IoAdd, IoNotifications, IoPeople, IoLogOut, IoArrowBack } from "react-icons/io5"
 import Image from 'next/image';
 import { useRouter } from "next/router";
 import Head from "next/head";
 
 const Layout = ({ children }: any) => {
-
+    const [sidebar, setSidebar] = useState<boolean>(false);
 
     return (
         <>
@@ -16,9 +16,9 @@ const Layout = ({ children }: any) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <div>
-                <Sidebar />
-                <div className="ml-half ">
-                    <Navbar />
+                <Sidebar display={sidebar} onDisplay={(args: boolean) => setSidebar(args)} />
+                <div className="lg:ml-half ">
+                    <Navbar onDisplay={(args: boolean) => setSidebar(args)} />
                     {children}
                 </div>
 
@@ -28,7 +28,7 @@ const Layout = ({ children }: any) => {
     )
 }
 
-const Sidebar = () => {
+const Sidebar = ({ display, onDisplay }: ISidebar) => {
     const { pathname } = useRouter();
 
     const account: IAccount[] = [
@@ -46,10 +46,17 @@ const Sidebar = () => {
                 }
             ]
         }
-    ];  
+    ];
     return (
-        <aside className="bg-slate-900 h-screen fixed w-10/12  lg:w-2/12    ">
-            <Image src={"/assets/logo-light.png"} alt={"Logo"} width={120} height={120} className={'mx-auto my-6'} />
+        <aside className={`bg-slate-900 h-screen z-10 fixed w-10/12 ${display || 'hidden'} lg:w-2/12 lg:block  `}>
+            <div className="lg:sr-only flex justify-between px-6 pt-3">
+                <Image src={"/assets/logo-light.png"} alt={"Logo"} width={120} height={120} className={' my-6'} />
+                <button className="hover:bg-gray-700 rounded-md" onClick={() => onDisplay(false)}>
+                    <IoArrowBack className="w-12 text-3xl text-white " />
+                </button>
+            </div>
+            <Image src={"/assets/logo-light.png"} alt={"Logo"} width={120} height={120} className={'mx-auto my-6 hidden lg:block'} />
+
 
             <div className="p-4">
                 <Link className={` text-gray-400 h-12 uppercase text-sm flex items-center  ${pathname === '/dashboard' && 'active-tab'} hover:bg-slate-700 rounded-md `} href={'/dashboard'} >
@@ -68,7 +75,7 @@ const Sidebar = () => {
     )
 }
 
-const Navbar = () => {
+const Navbar = ({ onDisplay }: INavbar) => {
 
     const staffRef = useRef<HTMLDivElement>(null)
     const [caret, setCaret] = useState<boolean>(true);
@@ -83,8 +90,11 @@ const Navbar = () => {
         setCaret(p => !p);
     }
     return (
-        <nav className="border flex p-4 px-8 justify-between">
-            <input type="search" name="" id="" placeholder="Search" className="p-2 rounded-sm bg-gray-200" />
+        <nav className="border flex p-4 px-8 justify-between ">
+            <input type="search" name="" id="" placeholder="Search" className="sr-only lg:not-sr-only p-2 rounded-sm bg-gray-200" />
+            <button className="p-1 bg-gray-100 rounded-md lg:hidden" onClick={() => onDisplay(true)}>
+                <IoMenu className="w-12 text-3xl" />
+            </button>
             <div className="flex items-center justify-center gap-x-6">
                 <button className=" h-full relative hover:bg-slate-200 p-2   rounded-md">
                     <p className="bg-red-600 rounded-full text-white text-xs font-bold text-center absolute p-1 -right-1 -top-2">10</p>
@@ -94,8 +104,8 @@ const Navbar = () => {
                     <button className="flex items-center gap-2" onClick={onItemClick}>
                         <Image src={'/assets/avatar-10.jpg'} alt={'Avatar'} className={'rounded-full'} height={40} width={40} />
                         <div className="text-sm">
-                            <p className="font-bold">Emmanuella Asamoah</p>
-                            <p className="text-gray-600 text-left">Frontend Developer</p>
+                            <p className="font-bold">Emmanuella</p>
+                            <p className="text-gray-600 text-left">Frontend</p>
                         </div>
 
                     </button>
@@ -180,4 +190,11 @@ interface IAccount {
 }
 
 
+interface ISidebar extends INavbar {
+    display: boolean;
+}
+
+interface INavbar {
+    onDisplay: (args: boolean) => void;
+}
 export default Layout;

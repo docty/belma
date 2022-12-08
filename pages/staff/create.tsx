@@ -27,10 +27,10 @@ const Content = () => {
                 </div>
             </div>
 
-            <div className=" p-6">
-                <div className="bg-white col-span-2 p-3 h-96 shadow-md">
+            <div className=" p-6"> 
+                <div className="bg-white p-3 h-96 shadow-md">
                     <p className="border-b mb-4">Staff Create</p>
-                    <form action="#" className='grid grid-cols-3 gap-6'>
+                    <form action="#" className='grid lg:grid-cols-3 gap-6'>
                         <div className='w-full'>
                             <label htmlFor="" className='block font-semibold'>First Name</label>
                             <input type="text" placeholder='Enter First Name' className='border rounded-md block p-3 w-full' />

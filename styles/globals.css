@@ -66,6 +66,9 @@ a {
   font-weight: bold;
 }
 
-.ml-half {
-  margin-left: 16.666667%;
+ 
+@media (min-width: 1024px) {
+  .lg\:ml-half {
+    margin-left: 16.666667%;
+  }
 }

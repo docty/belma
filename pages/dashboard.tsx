@@ -17,19 +17,19 @@ const Content = () => {
 
     const data = [
         {
-            name: 'Page A',
+            name: 'Daily ',
             uv: 4000,
             pv: 2400,
             amt: 2400,
         },
         {
-            name: 'Page B',
+            name: 'Weekly ',
             uv: 3000,
             pv: 1300,
             amt: 6400,
         },
         {
-            name: 'Page C',
+            name: 'Monthly ',
             uv: 6000,
             pv: 3400,
             amt: 8400,
@@ -65,7 +65,7 @@ const Content = () => {
                     <p className="text-gray-600">Dashboard</p>
                 </div>
             </div>
-            <div className="grid grid-cols-4 p-6 mt-12 gap-x-4">
+            <div className="grid lg:grid-cols-4 p-6 mt-12 gap-x-4">
                 <div className="border p-3 rounded-md shadow-md">
                     <div className="flex justify-between uppercase ">
                         <p className="text-gray-500">Total Earnings</p>
@@ -132,10 +132,10 @@ const Content = () => {
                 </div>
 
             </div>
-            <div className="grid grid-cols-3 p-6 gap-x-4">
-                <div className="bg-white col-span-2 p-3 h-96 shadow-md">
-                    <p className="border-b">Revenue</p>
-                    <LineChart width={500} height={300} data={data}>
+            <div className="grid  lg:grid-cols-3 p-6 gap-6">
+                <div className="bg-white col-span-2 p-3 h-96 shadow-md ">
+                    <p className="border-b">Sales</p>
+                    <LineChart width={300} height={300} className={'max-w-full'} data={data}>
                         <XAxis dataKey={'name'} />
                         <YAxis />
                         <Tooltip />
@@ -145,8 +145,8 @@ const Content = () => {
                     </LineChart>
                 </div>
                 <div className="bg-white shadow-md p-3 ">
-                    <p className="border-b">Sales by Locations</p>
-                    <PieChart width={500} height={300}    >
+                    <p className="border-b">Efficiency</p>
+                    <PieChart width={300} height={300}    >
                         <Tooltip/>
                         <Pie dataKey={"weight"} data={pieData}  fill={'#8884d8'} label/>
                         {

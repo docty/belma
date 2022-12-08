@@ -1,7 +1,4 @@
-import Image from "next/image"
-import Link from "next/link"
-import { Children, useRef, useState } from "react"
-import { IoHome, IoCaretForward, IoCaretDown, IoAdd, IoAccessibility, IoApps, IoNotifications, IoPeople, IoLogOut, IoArrowUp, IoCart, IoArrowDown, IoPricetag, IoBag, IoPencil, IoTrash } from 'react-icons/io5'
+import { IoCaretForward, IoPeople, IoPencil, IoTrash } from 'react-icons/io5'
 import Layout from "../../components/layout"
 
 const View = () => {
@@ -33,24 +30,20 @@ const Content = () => {
             <div className=" p-6">
                 <div className="bg-white col-span-2 p-3 h-96 shadow-md">
                     <p className="border-b">Staff List</p>
-                    <table className=" mt-8 w-full">
-                        <thead >
-                            <tr className="border  cursor-pointer text-left">
+                    <table className="mt-8 w-full max-w-full overflow-scroll">
+                        <thead className="overflow-scroll">
+                            <tr className="border  cursor-pointer text-left overflow-scroll">
                                 <th className="p-3">SN</th>
                                 <th>Full Name</th>
-                                <th>Email</th>
-                                <th>Contact</th>
-                                <th>Status</th>
+                                <th>Email</th> 
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr className="cursor-pointer border-b hover:bg-gray-200">
+                        <tbody className="overflow-scroll">
+                            <tr className="cursor-pointer border-b hover:bg-gray-200 overflow-scroll">
                                 <td className="p-3">1</td>
                                 <td>Henry Kwasi Asiedu</td>
-                                <td>developer@belma.com</td>
-                                <td>+233000000000</td>
-                                <td>Active</td>
+                                <td>developer@belma.com</td> 
                                 <td>
                                     <button className="mx-3">
                                         <IoPencil />
@@ -63,9 +56,7 @@ const Content = () => {
                             <tr className="cursor-pointer border-b hover:bg-gray-200">
                                 <td className="p-3">2</td>
                                 <td>Emmanuella Asamoah</td>
-                                <td>manager@belma.com</td>
-                                <td>+233000000001</td>
-                                <td>Active</td>
+                                <td>manager@belma.com</td> 
                                 <td>
                                     <button className="mx-3">
                                         <IoPencil />
@@ -78,9 +69,7 @@ const Content = () => {
                             <tr className="cursor-pointer border-b hover:bg-gray-200">
                                 <td className="p-3">3</td>
                                 <td>Elsie Aikins</td>
-                                <td>officer@belma.com</td>
-                                <td>+233000000002</td>
-                                <td>Active</td>
+                                <td>officer@belma.com</td> 
                                 <td>
                                     <button className="mx-3">
                                         <IoPencil />
