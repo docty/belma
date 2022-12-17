@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { IoHome, IoCaretForward, IoPeople, IoArrowUp, IoCart, IoArrowDown, IoPricetag, IoBag } from 'react-icons/io5'
+import { IoHomeOutline, IoCaretForward, IoPeople, IoArrowUp, IoCart, IoArrowDown, IoPricetag, IoBag, IoPricetagOutline, IoCartOutline, IoPeopleOutline, IoBagOutline } from 'react-icons/io5'
 import Layout from "../components/layout"
 import { Cell, Legend, Line, LineChart, Pie, PieChart, Tooltip, XAxis, YAxis } from 'recharts'
 
@@ -53,10 +53,10 @@ const Content = () => {
 
     const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042']
     return (
-        <>
+        <> 
             <div className="flex justify-between border border-t-0 p-3">
-                <p className="uppercase text-gray-900 font-bold px-8">
-                    <IoHome className="inline mr-2" />
+                <p className="uppercase text-gray-900 font-bold px-8 items-center flex">
+                    <IoHomeOutline className="inline mr-2 text-xl" />
                     Dashboard
                 </p>
                 <div className="flex items-center gap-x-2 text-sm">
@@ -65,12 +65,12 @@ const Content = () => {
                     <p className="text-gray-600">Dashboard</p>
                 </div>
             </div>
-            <div className="grid lg:grid-cols-4 p-6 mt-12 gap-x-4">
-                <div className="border p-3 rounded-md shadow-md">
+            <div className="grid lg:grid-cols-4 p-6 mt-12 gap-4">
+                <div className="border p-3 rounded-md shadow-sm">
                     <div className="flex justify-between uppercase ">
                         <p className="text-gray-500">Total Earnings</p>
                         <p className="text-green-600">
-                            <IoArrowUp className="inline" />
+                            <IoArrowUp className="inline mr-1" />
                             +16.24%
                         </p>
                     </div>
@@ -78,15 +78,15 @@ const Content = () => {
                     <div className="flex justify-between">
                         <Link href={'#'} className={'underline text-blue-700 text-sm self-end'}>View net earnings</Link>
                         <div className="bg-green-200 p-4 rounded-md">
-                            <IoPricetag className="text-xl" />
+                            <IoPricetagOutline className="text-xl" />
                         </div>
                     </div>
                 </div>
-                <div className="border p-3 rounded-md shadow-md">
+                <div className="border p-3 rounded-md shadow-sm">
                     <div className="flex justify-between uppercase ">
                         <p className="text-gray-500">Orders</p>
                         <p className="text-red-600">
-                            <IoArrowDown className="inline" />
+                            <IoArrowDown className="inline mr-1" />
                             -3.57%
                         </p>
                     </div>
@@ -94,15 +94,15 @@ const Content = () => {
                     <div className="flex justify-between">
                         <Link href={'#'} className={'underline text-blue-700 text-sm self-end'}>View all orders</Link>
                         <div className="bg-orange-200 p-4 rounded-md">
-                            <IoCart className="text-xl" />
+                            <IoCartOutline className="text-xl" />
                         </div>
                     </div>
                 </div>
-                <div className="border p-3 rounded-md shadow-md">
+                <div className="border p-3 rounded-md shadow-sm">
                     <div className="flex justify-between uppercase ">
                         <p className="text-gray-500">Customers</p>
                         <p className="text-green-600">
-                            <IoArrowUp className="inline" />
+                            <IoArrowUp className="inline mr-1" />
                             +29.08%
                         </p>
                     </div>
@@ -110,15 +110,15 @@ const Content = () => {
                     <div className="flex justify-between">
                         <Link href={'#'} className={'underline text-blue-700 text-sm self-end'}>See details</Link>
                         <div className="bg-sky-200 p-4 rounded-md">
-                            <IoPeople className="text-xl" />
+                            <IoPeopleOutline className="text-xl" />
                         </div>
                     </div>
                 </div>
-                <div className="border p-3 rounded-md shadow-md">
+                <div className="border p-3 rounded-md shadow-sm">
                     <div className="flex justify-between uppercase ">
                         <p className="text-gray-500">My Balance</p>
                         <p className="text-green-600">
-                            <IoArrowUp className="inline" />
+                            <IoArrowUp className="inline mr-1" />
                             +0.50%
                         </p>
                     </div>
@@ -126,7 +126,7 @@ const Content = () => {
                     <div className="flex justify-between">
                         <Link href={'#'} className={'underline text-blue-700 text-sm self-end'}>Withdraw money</Link>
                         <div className="bg-violet-200 p-4 rounded-md">
-                            <IoBag className="text-xl" />
+                            <IoBagOutline className="text-xl" />
                         </div>
                     </div>
                 </div>

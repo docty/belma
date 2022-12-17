@@ -42,9 +42,9 @@ a {
 
 .bg-image {
   height: 400px;
-  background-position: center;
+  background-position: bottom;
   background-size: cover;
-  background-image: url('../public//assets/auth-one-bg.jpg');
+  background-image: url('../public//assets/img-1.jpg');
 }
 
 .shape-1 {
