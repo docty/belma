@@ -1,4 +1,5 @@
-import { IoCaretForward, IoPeople, IoPencil, IoTrash } from 'react-icons/io5'
+import { useState } from 'react'
+import { IoCaretForward, IoPeople, IoPencilOutline, IoTrashOutline, IoSaveOutline } from 'react-icons/io5'
 import Layout from "../../components/layout"
 
 const View = () => {
@@ -12,6 +13,19 @@ const View = () => {
 
 
 const Content = () => {
+
+    const tableData: ITableData[] = [
+        {
+            sn: '1',
+            fullName: 'Henry Kwasi Asiedu',
+            email: 'developer@belma.com'
+        },
+        {
+            sn: '2',
+            fullName: '	Emmanuella Asamoah',
+            email: 'manager@belma.com'
+        }
+    ]
 
     return (
         <>
@@ -35,50 +49,16 @@ const Content = () => {
                             <tr className="border  cursor-pointer text-left overflow-scroll">
                                 <th className="p-3">SN</th>
                                 <th>Full Name</th>
-                                <th>Email</th> 
+                                <th>Email</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody className="overflow-scroll">
-                            <tr className="cursor-pointer border-b hover:bg-gray-200 overflow-scroll">
-                                <td className="p-3">1</td>
-                                <td>Henry Kwasi Asiedu</td>
-                                <td>developer@belma.com</td> 
-                                <td>
-                                    <button className="mx-3">
-                                        <IoPencil />
-                                    </button>
-                                    <button>
-                                        <IoTrash className="text-red-500" />
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr className="cursor-pointer border-b hover:bg-gray-200">
-                                <td className="p-3">2</td>
-                                <td>Emmanuella Asamoah</td>
-                                <td>manager@belma.com</td> 
-                                <td>
-                                    <button className="mx-3">
-                                        <IoPencil />
-                                    </button>
-                                    <button>
-                                        <IoTrash className="text-red-500" />
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr className="cursor-pointer border-b hover:bg-gray-200">
-                                <td className="p-3">3</td>
-                                <td>Elsie Aikins</td>
-                                <td>officer@belma.com</td> 
-                                <td>
-                                    <button className="mx-3">
-                                        <IoPencil />
-                                    </button>
-                                    <button>
-                                        <IoTrash className="text-red-500" />
-                                    </button>
-                                </td>
-                            </tr>
+                            {
+                                tableData.map((item) => (
+                                    <TableItem key={item.sn} {...item} />
+                                ))
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -88,5 +68,42 @@ const Content = () => {
     )
 }
 
+
+const TableItem = (item: ITableData) => {
+    const [onEdit, setOnEdit] = useState<boolean>(false);
+
+    return (
+        <tr key={item.sn} className={`cursor-pointer border-b hover:bg-gray-200 overflow-scroll `}>
+            <td className="p-3">{item.sn}</td>
+            <td contentEditable={onEdit} className={`${onEdit && 'border-2 border-gray-900 bg-white'}`}>{item.fullName}</td>
+            <td contentEditable={onEdit} className={`${onEdit && 'border-2 border-gray-900 bg-white'}`}>{item.email}</td>
+            <td>
+                {
+                    onEdit ?
+                        <>
+                            <button className="mx-1 bg-green-900 rounded-md p-2 hover:bg-green-700" onClick={() => setOnEdit(false)}>
+                                <IoSaveOutline className='text-xl text-green-100 ' />
+                            </button>
+                            <button className="mx-1 bg-red-900 rounded-md p-2" >
+                                <IoTrashOutline className='text-xl text-red-100 font-bold' />
+                            </button>
+                        </>
+                        :
+                        <button className="mx-1 bg-blue-900 hover:bg-blue-700 rounded-md p-2" onClick={() => setOnEdit(true)}>
+                            <IoPencilOutline className='text-xl text-blue-100 ' />
+                        </button>
+                }
+
+
+            </td>
+        </tr>
+    )
+}
+
+interface ITableData {
+    sn: string
+    fullName: string
+    email: string
+}
 
 export default View
