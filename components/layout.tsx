@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Children, useRef, useState } from "react"
-import { IoApps, IoHomeOutline, IoCaretForward, IoCaretDown, IoMenu, IoAdd, IoNotificationsOutline, IoPeople, IoLogOut, IoArrowBack } from "react-icons/io5"
+import { IoApps, IoHomeOutline, IoCaretForward, IoCaretDown, IoMenu, IoAdd, IoNotificationsOutline, IoPeopleOutline, IoLogOutOutline, IoArrowBack } from "react-icons/io5"
 import Image from 'next/image';
 import { useRouter } from "next/router";
 import Head from "next/head";
@@ -111,12 +111,12 @@ const Navbar = ({ onDisplay }: INavbar) => {
                     </button>
                     <div ref={staffRef} className=" absolute w-full bg-white mt-3 z-10 shadow-md h-0 overflow-y-clip">
                         <button className="text-gray-600 hover:bg-slate-100 block w-full text-left p-2">
-                            <IoPeople className="inline w-12 text-lg" />
+                            <IoPeopleOutline className="inline w-12 text-lg" />
                             <span className="text-sm">Profile</span>
                         </button>
                         <hr className="my-2" />
                         <button className="text-gray-600 hover:bg-slate-100 block w-full text-left p-2">
-                            <IoLogOut className="inline w-12 text-lg" />
+                            <IoLogOutOutline className="inline w-12 text-lg" />
                             <Link href={'/logout'} className="text-sm">Logout</Link>
                         </button>
                     </div>

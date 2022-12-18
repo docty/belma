@@ -1,5 +1,6 @@
+import Link from 'next/link'
 import { useState } from 'react'
-import { IoCaretForward, IoPeople, IoPencilOutline, IoTrashOutline, IoSaveOutline } from 'react-icons/io5'
+import { IoCaretForward, IoPeople, IoPencilOutline, IoTrashOutline, IoSaveOutline, IoAddOutline } from 'react-icons/io5'
 import Layout from "../../components/layout"
 
 const View = () => {
@@ -43,7 +44,13 @@ const Content = () => {
 
             <div className=" p-6">
                 <div className="bg-white col-span-2 p-3 h-96 shadow-md">
-                    <p className="border-b">Staff List</p>
+                    <div className='flex justify-between   items-center'>
+                        <p className="">Staff List</p>
+                        <Link href={'/staff/create'} className='bg-amber-700 hover:bg-amber-600 p-3 rounded-md text-white'>
+                            <IoAddOutline className='inline text-white mx-1 text-xl font-bold' />
+                            Add Staff</Link>
+                    </div>
+
                     <table className="mt-8 w-full max-w-full overflow-scroll">
                         <thead className="overflow-scroll">
                             <tr className="border  cursor-pointer text-left overflow-scroll">
