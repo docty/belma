@@ -10,7 +10,7 @@ const Dashboard = () => {
             <Content />
         </Layout>
     )
-}
+}   
 
 
 const Content = () => {
